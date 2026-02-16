@@ -1,18 +1,26 @@
 export class Person {
-    firstname : string ;
-    lastname : string ;
-    constructor (firstname ="" , lastname = "") {
-        this.firstname = firstname;
-        this.lastname = lastname;
+  public firstname: string = '';
+  public lastname: string = '';
+  private age: number = 0; // ใช้ private เพื่อป้องกันการแก้ไขตรง ๆ
+
+  // Static constant
+  public static readonly COUNTRY: string = 'Thailand';
+
+  // Method สำหรับตั้งค่าอายุ
+  public setAge(age: number): void {
+    if (!Number.isInteger(age) || age < 0) {
+      throw new Error('Age must be a non-negative integer.');
     }
-    
-    getFullName () {
-        return [this.firstname, this.lastname].join(' ');
-    }
-    setAge() {
-        private_Age() {
-            
-            
-        }
-    }
+    this.age = age;
+  }
+
+  // Method สำหรับดึงค่าอายุ
+  public getAge(): number {
+    return this.age;
+  }
+
+  // Method สำหรับดึงชื่อเต็ม
+  public getFullName(): string {
+    return `${this.firstname} ${this.lastname}`.trim();
+  }
 }
