@@ -21,6 +21,15 @@ export class Person {
 
   // Method สำหรับดึงชื่อเต็ม
   public getFullName(): string {
-    return `${this.firstname} ${this.lastname}`.trim();
+  // รวมชื่อและนามสกุลเข้าด้วยกัน
+  const fullName = `${this.firstname} ${this.lastname}`.trim();
+
+  // ถ้าทั้งสองเป็น empty string ให้คืนค่าเป็น " " (space)
+  if (!this.firstname && !this.lastname) {
+    return " ";
   }
+
+  return fullName;
+}
+
 }
